@@ -8,7 +8,7 @@ end
 guess_array = []
 
 def guess_array_method(guess_array, guess)
-  if guess == guess_array.last
+  if guess_array.include?(guess)
     puts "You do that again and I shall said, NI! NI! NI!"
     return false
   else
