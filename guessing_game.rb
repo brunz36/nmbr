@@ -8,13 +8,21 @@ end
 guess_array = []
 
 def guess_array_method(guess_array, guess)
-  guess_array.push(guess)
+  if guess == guess_array.last
+    puts "You do that again and I shall said, NI! NI! NI!"
+    return false
+  else
+    return true
+  end
 end
-
 
 loop do
   guess = user_guess("Please enter a number between 1 and 100")
-  guess_array_method(guess_array, guess)
+  if guess_array_method(guess_array, guess)
+    guess_array.push(guess)
+  else
+    next
+  end
 
   if guess_array.length == 5
     puts "Sorry but you've ran out of guesses, the correct number was #{random_number}."
