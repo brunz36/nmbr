@@ -1,7 +1,10 @@
 class Game
+  # attr_reader "random_number", "guess_array"
+
   def initialize
     @random_number = Random.rand(1..100)
     @guess_array = []
+
   end
 
   def user_guess(prompt)
@@ -29,6 +32,14 @@ class Game
     end
   end
 
+  def stupid_guess
+    if @guess_array.last < @random_number && @guess < @guess_array.last
+      puts "I fart in your general direction."
+    elsif @guess_array.last > @random_number && @guess > @guess_array.last
+      puts "I fart in your general direction."
+    end
+  end
+
   def play
     loop do
       @guess = user_guess("Please enter a number between 1 and 100")
@@ -39,6 +50,7 @@ class Game
       end
 
       compare_guess_random
+      stupid_guess
 
       if @guess_array.length == 5
         puts "Sorry but you've ran out of guesses, the correct number was #{@random_number}."
